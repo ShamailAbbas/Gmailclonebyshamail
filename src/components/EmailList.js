@@ -14,15 +14,18 @@ import '../css/EmailList.css'
 import Section from '../components/Section'
 import EmailRow from '../components/EmailRow'
 import { db } from '../Firebase'
-
+import { inbox } from '../features/mailSlice'
+import { sent } from '../features/mailSlice'
 import { selectUser } from '../features/userSlice'
 import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Mailoptions from './Mailoptions'
 
 function EmailList({ props }) {
   const [emails, setEmails] = useState([])
   const [checkbox, setcheckbox] = useState(false)
   const user = useSelector(selectUser)
+  const dispatch = useDispatch()
   const mailbox = props
 
   useEffect(() => {
@@ -38,7 +41,12 @@ function EmailList({ props }) {
           }))
         )
       )
-  }, [])
+     
+      if (mailbox=="inbox")
+      dispatch(inbox(emails.length))
+      if(mailbox=="sent")
+      dispatch(sent(emails.length))
+  }, [emails.length])
 
   return (
     <div className='emailList'>

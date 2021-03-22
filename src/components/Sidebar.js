@@ -16,13 +16,16 @@ import DuoIcon from '@material-ui/icons/Duo'
 import PhoneIcon from '@material-ui/icons/MobileFriendly'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { openSendMessage } from '../features/mailSlice'
 import { openSentmailbox } from '../features/mailSlice'
 import { openInbox } from '../features/mailSlice'
-
+import { inboxlenght } from '../features/mailSlice'
+import { sentlength } from '../features/mailSlice'
 function Sidebar() {
   const dispatch = useDispatch()
-
+  const inbox = useSelector(inboxlenght)
+  const sent = useSelector(sentlength)
   return (
     <div className='sidebar'>
       <Button
@@ -41,26 +44,26 @@ function Sidebar() {
         <SidebarOption
           Icon={InboxIcon}
           title='Inbox'
-          number={54}
+          number={inbox}
           // selected={false}
         />
       </Link>
 
-      <SidebarOption Icon={StarIcon} title='Starred' number={54} />
-      <SidebarOption Icon={AccessTimeIcon} title='Snoozed' number={54} />
+      <SidebarOption Icon={StarIcon} title='Starred' number={0} />
+      <SidebarOption Icon={AccessTimeIcon} title='Snoozed' number={0} />
 
-      <SidebarOption Icon={LabelImportantIcon} title='Important' number={54} />
+      <SidebarOption Icon={LabelImportantIcon} title='Important' number={0} />
       <Link
         to='/sent'
         onClick={() => {
           dispatch(openSentmailbox())
         }}
       >
-        <SidebarOption Icon={NearMeIcon} title='Sent' number={54} />
+        <SidebarOption Icon={NearMeIcon} title='Sent' number={sent} />
       </Link>
 
-      <SidebarOption Icon={NoteIcon} title='Drafts' number={54} />
-      <SidebarOption Icon={ExpandMoreIcon} title='More' number={54} />
+      <SidebarOption Icon={NoteIcon} title='Drafts' number={0} />
+      <SidebarOption Icon={ExpandMoreIcon} title='More' number={0} />
 
       <div className='sidebar__footer'>
         <div className='sidebar__footerIcons'>
