@@ -52,43 +52,33 @@ function App() {
     <Router>
       {/* {!user ? ( */}
       <Login />
-      // ) : // ( //{" "}
-      <div className="App">
-        // <Header />
-        //{" "}
-        <div className="app_body">
-          // <Sidebar />
-          //{" "}
-          <Switch>
-            //{" "}
-            <Route path="/mail">
-              // <Mail />
-              //{" "}
-            </Route>
-            //{" "}
-            <Route path="/inbox/Social">
-              // <EmailList props={"social"} />
-              //{" "}
-            </Route>
-            //{" "}
-            <Route path="/inbox/Promotions">
-              // <EmailList props={"promotions"} />
-              //{" "}
-            </Route>
-            //{" "}
-            <Route path={!sentmailboxIsOpen ? "/inbox" : "/sent"}>
-              // {!sentmailboxIsOpen ? <Inbox /> : <Sent />}
-              //{" "}
-            </Route>
-            // <Redirect to="/inbox" />
-            //{" "}
-          </Switch>
-          //{" "}
+      {/*
+      ) : (
+        <div className='App'>
+          <Header />
+          <div className='app_body'>
+            <Sidebar />
+            <Switch>
+              <Route path='/mail'>
+                <Mail />
+              </Route>
+              <Route path='/inbox/Social'>
+                <EmailList props={'social'} />
+              </Route>
+              <Route path='/inbox/Promotions'>
+                <EmailList props={'promotions'} />
+              </Route>
+
+              <Route path={!sentmailboxIsOpen ? '/inbox' : '/sent'}>
+                {!sentmailboxIsOpen ? <Inbox /> : <Sent />}
+              </Route>
+              <Redirect to='/inbox' />
+            </Switch>
+          </div>
+          {sendMessageIsOpen && <SendMail />}
         </div>
-        // {sendMessageIsOpen && <SendMail />}
-        //{" "}
-      </div>
-      {/* )} */}
+      )}
+      */}
     </Router>
   );
 }
