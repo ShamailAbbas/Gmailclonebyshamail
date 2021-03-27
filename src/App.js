@@ -50,35 +50,33 @@ function App() {
 
   return (
     <Router>
-      {/* {!user ? ( */}
-      <Login />
-      {/*
+      {!user ? (
+        <Login />
       ) : (
-        <div className='App'>
+        <div className="App">
           <Header />
-          <div className='app_body'>
+          <div className="app_body">
             <Sidebar />
             <Switch>
-              <Route path='/mail'>
+              <Route path="/mail">
                 <Mail />
               </Route>
-              <Route path='/inbox/Social'>
-                <EmailList props={'social'} />
+              <Route path="/inbox/Social">
+                <EmailList props={"social"} />
               </Route>
-              <Route path='/inbox/Promotions'>
-                <EmailList props={'promotions'} />
+              <Route path="/inbox/Promotions">
+                <EmailList props={"promotions"} />
               </Route>
 
-              <Route path={!sentmailboxIsOpen ? '/inbox' : '/sent'}>
+              <Route path={!sentmailboxIsOpen ? "/inbox" : "/sent"}>
                 {!sentmailboxIsOpen ? <Inbox /> : <Sent />}
               </Route>
-              <Redirect to='/inbox' />
+              <Redirect to="/inbox" />
             </Switch>
           </div>
           {sendMessageIsOpen && <SendMail />}
         </div>
       )}
-      */}
     </Router>
   );
 }
